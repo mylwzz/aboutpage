@@ -175,16 +175,6 @@ h2 {
     color: #555;
 }
 
-/* Profile Picture styles */
-.profile-pic {
-    width: 250px; 
-    height: 250px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    display: block;
-    margin: 40px auto; 
-}
-
 /* Link color */
 #links a {
     color: #FF0000; /* Red color */
@@ -196,4 +186,15 @@ h2 {
 /* Hover effect */
 #links a:hover {
     color: #FFD700;
+}
+
+
+/* Profile Picture styles */
+.profile-pic {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    display: block;
+    margin: 40px auto; 
 }
