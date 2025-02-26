@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.dark-mode {
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+/* Toggle Button Container */
+.toggle-button {
+    width: 60px;
+    height: 30px;
+    background-color: #87CEEB; /* Light mode sky */
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.toggle-button.dark {
+    background-color: #4C51BF; /* Dark mode sky */
+}
+
+/* Sun & Moon */
+.sun-moon {
+    width: 22px;
+    height: 22px;
+    background-color: #FFD700; /* Sun */
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.toggle-button.dark .sun-moon {
+    background-color:  #F4E3C3; /* Moon */
+    transform: translate(30px, -50%);
+    box-shadow: inset -3px -3px 0px #D6BFA5; /* Moon shadow */
+}
+
+/* Stars & Clouds Container */
+.stars-clouds {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
+/* White Clouds in Light Mode */
+.cloud {
+    width: 10px;
+    height: 2px;
+    background: white;
+    border-radius: 4px;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Position Clouds */
+.star1 { top: 50%; left: 9px; transform: translateY(-50%); }
+.star2 { top: 60%; left: 14px; transform: translateY(-50%); }
+.star3 { top: 40%; left: 17px; transform: translateY(-50%); }
+
+
+/* ☀️ Move Clouds in Light Mode */
+.toggle-button:not(.dark) .star1 {
+    left: 32px !important; /* Move */
+    width: 14px; /* Stretch */
+}
+
+.toggle-button:not(.dark) .star2 {
+    left: 37px !important; 
+    width: 18px;
+}
+
+.toggle-button:not(.dark) .star3 {
+    left: 40px !important; 
+    width: 13px;
+}
+
+
+/* Clouds in Dark Mode */
+.toggle-button.dark .cloud {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Shrinks into stars */
+}
+
+/* Center the container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; 
+    text-align: center;
+    padding: 20px;
+}
+
+/* Links container */
+#links ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
+/* Style list item */
+#links li {
+    display: flex;
+    align-items: center; 
+    gap: 8px; 
+    margin-bottom: 8px; 
+}
+
+/* Arrows */
+.arrow {
+    display: inline-block;
+    width: 15px;
+    text-align: middle; 
+}
+
+/* Garamond Font */
+body {
+    font-family: "Garamond", serif;
+}
+
+/* Name font size */
+h1 {
+    font-size: 42px; 
+    font-weight: bold;
+}
+
+/* "My Links!" */
+h2 {
+    font-size: 24px; 
+}
+
+/* make Links section independent */
+#links {
+    text-align: left;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+/* Center quote */
+#quote-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+    font-style: italic;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Profile Picture styles */
+.profile-pic {
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    display: block;
+    margin: 40px auto; 
+}
+
+/* Link color */
+#links a {
+    color: #FF0000; /* Red color */
+    text-decoration: none; 
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect */
+#links a:hover {
+    color: #FFD700;
+}
