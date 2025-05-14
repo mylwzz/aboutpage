@@ -1,0 +1,23 @@
+{
+  "name": "aboutpage",
+  "version": "1.0.0",
+  "description": "about me !",
+  "main": "generate-favicons.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mylwzz/aboutpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mylwzz/aboutpage/issues"
+  },
+  "homepage": "https://github.com/mylwzz/aboutpage#readme",
+  "dependencies": {
+    "sharp": "^0.34.1"
+  }
+}

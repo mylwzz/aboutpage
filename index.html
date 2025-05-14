@@ -7,6 +7,15 @@
     <meta name="title" content="Marquis Wong - Personal Website">
     <meta name="description" content="Hey! I'm a M.S. graduate student studying Information Science at Cornell Tech in NYC.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="assets/favicon-32x32.png">
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/png">
+
     <!-- FB -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Marquis Wong - Personal Website">
@@ -59,14 +68,140 @@
             <section id="links">
                 <h2>My Links!</h2>
                 <ul>
-                    <li>➜ <a href="https://drive.google.com/file/d/1mkFiUHtwAWoF_yqxB2l3622Aoo2FCSuK/view?usp=drive_link" target="_blank">Resume</a></li>
+                    <li>➜ <a href="https://drive.google.com/file/d/1qx_WeQwhYDg0Fb2ACr2fhnDeoVKTpDdm/view?usp=sharing" target="_blank">Resume</a></li>
                     <li>➜ <a href="https://www.linkedin.com/in/marquiswong/" target="_blank">LinkedIn</a></li>
+                    <li>➜ <a href="https://github.com/mylwzz" target="_blank">GitHub</a></li>
                 </ul>
             </section>
-            <section id="quote-section">
-                <p id="quote">Loading quote...</p>
-            </section>   
-           
+
+            <section id="experience">
+                <h2>Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Ernst & Young Advisory Services Ltd.</h3>
+                    <p class="location">Quarry Bay, Hong Kong | Jul 2023 – Aug 2023</p>
+                    <p class="role">Business Advisory Intern: Climate Change and Sustainability Services</p>
+                    <ul>
+                        <li>Collaborated with clients in the lifecycles of different projects pertaining to various industrial operations – work ranges from due diligence, conducting climate risk assessments, to identifying feasible ESG initiatives for investment opportunities</li>
+                        <li>Developed project pipeline for a top UK conglomerate, recommended that suggested investments were not viable through projecting and analyzing future cash flows with risks considered, ultimately pivoting management's perspective</li>
+                        <li>Secured a $20M green bank loan for a client by modeling quantitative market data and conducting multiple regression forecasts to assess the feasibility of their proposed 2030 targets, recommending alternative investments</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>AECOM Company Ltd.</h3>
+                    <p class="location">Sha Tin, Hong Kong | Jun 2022 – Aug 2022</p>
+                    <p class="role">Urban Technician Intern: U+P</p>
+                    <ul>
+                        <li>Produced weekly technical assessments for diverse urban redevelopment initiatives, following the project lifecycle</li>
+                        <li>Collaborated extensively with upper management on the Northern Metropolis project, presenting data-driven land use and development insights that reshaped perspectives on previously overlooked redevelopment opportunities</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Cornell Tech</h3>
+                    <p class="location">New York, NY | Expected May 2026</p>
+                    <p>M.S. Applied Information Science (Technion) & M.S. Information Systems (Cornell), Connective Media Concentration</p>
+                    <p class="awards">Awards: William & Barbara Dahl Master's Fellowship Fund</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Cornell University</h3>
+                    <p class="location">Ithaca, NY | 2020 - 2024</p>
+                    <p>B.S. Urban and Regional Studies, Minors in Real Estate, Business</p>
+                    <p class="awards">Awards: Dean's List (2021-2024), Community Service Award (2024)</p>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Technical Skills & Interests</h2>
+                <div class="skills-grid">
+                    <div class="skills-category">
+                        <h3>Technical</h3>
+                        <p>Python, Java, R, JavaScript, React, HTML, CSS, JavaScript, Adobe Suite, Office, AutoCAD, ArcGIS, QGIS, ARGUS</p>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Major Libraries & Modules</h3>
+                        <p>Numpy, Pandas, Apache Spark, PyTorch, scikit-learn, Matplotlib, Seaborn, StatsModels</p>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Coursework</h3>
+                        <p>Machine Learning Engineering, Data Science, Python, OOP (Java), Linear Algebra, Real Estate Development</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <h3>Exploring what 311 Requests reveal about NYC's Neighborhoods</h3>
+                        <p class="tech-stack">Python, Pandas, GeoPandas, scikit-learn</p>
+                        <img src="assets/nyc311.png" alt="NYC 311 Data Analysis Project" class="project-image">
+                        <ul>
+                            <li>Built a pipeline merging NYC 311 requests, Census demographic data, and shapefiles for geospatial analysis</li>
+                            <li>Created regression and clustering models, identifying correlations between complaints, income, and demographics</li>
+                        </ul>
+                        <a href="https://github.com/mylwzz/nyc311urbandata" target="_blank" class="project-link">View Project on GitHub →</a>
+                    </div>
+
+                    <div class="project-item">
+                        <h3>RoomSync-Lite – Roommate Matching Web App</h3>
+                        <p class="tech-stack">Next.js, React, PostgreSQL</p>
+                        <img src="assets/roomsync.png" alt="RoomSync-Lite Project" class="project-image">
+                        <ul>
+                            <li>Developed full-stack application enabling profile onboarding, preference-based matching, and secure authentication</li>
+                            <li>Implemented type-safe database queries with Drizzle and responsive UI design using Tailwind CSS and Framer Motion</li>
+                            <li>Deployed on Vercel, achieving real-time updates and seamless user experience through API and database integrations</li>
+                        </ul>
+                        <a href="https://github.com/mylwzz/roomsynclite" target="_blank" class="project-link">View Project on GitHub →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="leadership">
+                <h2>Leadership & Extracurricular Experience</h2>
+                <div class="leadership-item">
+                    <h3>Cornell University Sustainable Design</h3>
+                    <p class="location">Ithaca, New York | Aug 2022 – May 2024</p>
+                    <p class="role">Analytics Manager: Waste Management Modeling Team — Ithaca Carbon Neutral 2030</p>
+                    <ul>
+                        <li>Designed and optimized a predictive emissions model in Excel, integrating multi-source datasets to track and analyze intervention effectiveness through KPIs; developed using municipal and national data, verified through back testing</li>
+                        <li>Partnered with Greenstar Coop to quantitatively validate proposed policy changes and initiatives aimed at food waste</li>
+                    </ul>
+                </div>
+
+                <div class="leadership-item">
+                    <h3>Design Connect</h3>
+                    <p class="location">Ithaca, New York | Jan 2022 – Dec 2023</p>
+                    <p class="role">Project Manager: Tioga Opportunities, Inc. — Residential Re-development</p>
+                    <ul>
+                        <li>Managed a cross-functional team of 11 peers in the end-to-end strategic planning and approved execution of residential re-development for two properties in Upstate NY; construction began in July 2024</li>
+                        <li>Led user research initiatives, employing surveys and interviews to deeply understand the needs and pain points of multicultural user groups</li>
+                        <li>Reduced project cost by $117,000 through cost benefit analysis, market research, and creative design thinking</li>
+                    </ul>
+                </div>
+
+                <div class="leadership-item">
+                    <h3>Anabel's Grocery</h3>
+                    <p class="location">Ithaca, New York | Jan 2023 – Dec 2023</p>
+                    <p class="role">Marketing Committee Manager, Invoice Manager</p>
+                    <ul>
+                        <li>Directed a team of 8 in managing marketing and public relations efforts, including social media, newsletters, and campaigns</li>
+                        <li>Handled product pricing and purchasing, ensuring accurate invoices and cost-effective sourcing to maximize profit margins – raised sales by 70% and increased profits by $6,000 compared to the previous year</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="personal">
+                <h2>Personal Information</h2>
+                <div class="personal-info">
+                    <p><strong>Languages:</strong> English (Native), Cantonese (Fluent), Mandarin (Fluent)</p>
+                    <p><strong>Interests:</strong> Trivia, Traveling, Backcountry Camping, Cooking Cantonese Cuisine, Strategy Games, Go-Karts, Tennis, Skiing, Golf</p>
+                </div>
+            </section>
         </main>
     </div>
     <script src="script.js"></script>
