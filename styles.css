@@ -223,6 +223,14 @@ h2 {
     color: #FFD700;
 }
 
+.dark-mode #links a {
+    color: #FFD700;
+}
+
+.dark-mode #links a:hover {
+    color: #FF0000;
+}
+
 /* Experience section */
 #experience {
     margin: 40px 0;
