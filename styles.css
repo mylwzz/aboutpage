@@ -193,7 +193,7 @@ h2 {
 
 .links-container {
     display: flex;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -387,7 +387,7 @@ h2 {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 20px;
 }
