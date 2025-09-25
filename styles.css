@@ -439,7 +439,7 @@ h2 {
 
 .project-item {
     margin-bottom: 0;
-    padding: 30px;
+    padding: 25px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -449,8 +449,8 @@ h2 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-width: 700px;
-    width: 700px;
+    min-width: 500px;
+    width: 500px;
     flex-shrink: 0;
     height: auto;
 }
@@ -641,17 +641,23 @@ h2 {
     }
 
     #projects {
-        padding: 0 20px;
+        padding: 0 15px;
     }
 
     .project-item {
-        min-width: 500px;
-        width: 500px;
+        min-width: calc(100vw - 60px);
+        width: calc(100vw - 60px);
         padding: 20px;
     }
 
     .projects-grid {
         gap: 20px;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 15px;
+    }
+
+    .project-item {
+        scroll-snap-align: start;
     }
 
     .experience-item,
