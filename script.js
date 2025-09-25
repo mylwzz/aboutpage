@@ -20,4 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("theme", "light");
         }
     });
+
+    // Projects scroll limits
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (projectsGrid) {
+        projectsGrid.addEventListener('scroll', function() {
+            const maxScroll = projectsGrid.scrollWidth - projectsGrid.clientWidth;
+            const currentScroll = projectsGrid.scrollLeft;
+            
+            // Add some padding so projects don't scroll completely off screen
+            const buffer = 100;
+            
+            // Prevent scrolling too far left (keep some of first project visible)
+            if (currentScroll < -buffer) {
+                projectsGrid.scrollLeft = -buffer;
+            }
+            
+            // Prevent scrolling too far right (keep some of last project visible)
+            if (currentScroll > maxScroll + buffer) {
+                projectsGrid.scrollLeft = maxScroll + buffer;
+            }
+        });
+    }
 });

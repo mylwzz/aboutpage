@@ -388,8 +388,9 @@ h2 {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 0 40px;
+    padding: 0 60px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 #projects h2 {
@@ -399,12 +400,14 @@ h2 {
 
 .projects-grid {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 20px 0 40px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .projects-grid::-webkit-scrollbar {
@@ -436,7 +439,7 @@ h2 {
 
 .project-item {
     margin-bottom: 0;
-    padding: 20px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -446,9 +449,10 @@ h2 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-width: 350px;
-    max-width: 400px;
+    min-width: 700px;
+    width: 700px;
     flex-shrink: 0;
+    height: auto;
 }
 
 .project-item:hover {
@@ -641,8 +645,13 @@ h2 {
     }
 
     .project-item {
-        min-width: 280px;
-        max-width: 320px;
+        min-width: 500px;
+        width: 500px;
+        padding: 20px;
+    }
+
+    .projects-grid {
+        gap: 20px;
     }
 
     .experience-item,
