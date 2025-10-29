@@ -146,27 +146,58 @@ body {
     line-height: 1.6;
     margin: 20px 0;
     padding: 10px 20px;
-    color: transparent;
-    background: linear-gradient(to right, #f0f6ff 0%, #f0f6ff 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    transition: all 0.5s ease;
+    color: #f0f6ff;
+    transition: color 0.5s ease;
     cursor: default;
     font-style: italic;
+    user-select: none;
+    position: relative;
 }
 
 .invisible-ink:hover {
     color: #333;
-    background: none;
 }
 
 .dark-mode .invisible-ink {
-    background: linear-gradient(to right, #1e1e2f 0%, #1e1e2f 100%);
+    color: #1e1e2f;
+    transition: color 0.5s ease;
 }
 
 .dark-mode .invisible-ink:hover {
     color: #d1d1d6;
-    background: none;
+}
+
+/* Monochrome sparkle hint (disappears on hover) */
+.invisible-ink::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(0,0,0,0.15) 0 2px, transparent 3px),
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.12) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle at 40% 70%, rgba(0,0,0,0.1) 0 2px, transparent 3px),
+      radial-gradient(circle at 65% 55%, rgba(0,0,0,0.13) 0 1.5px, transparent 2.5px);
+    background-size: 200% 200%;
+    animation: sparkleFloat 3s linear infinite;
+    filter: blur(0.2px);
+}
+
+.dark-mode .invisible-ink::before {
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.18) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 32%, rgba(255,255,255,0.14) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle at 42% 72%, rgba(255,255,255,0.13) 0 2px, transparent 3px),
+      radial-gradient(circle at 60% 50%, rgba(255,255,255,0.16) 0 1.5px, transparent 2.5px);
+}
+
+.invisible-ink:hover::before { opacity: 0; }
+
+@keyframes sparkleFloat {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 100%; }
 }
 
 /* Profile Picture styles */
@@ -328,6 +359,14 @@ h2 {
     font-size: 18px;
     margin: 0 0 12px;
     font-weight: 500;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.experience-item p,
+.education-item p,
+.leadership-item p,
+.skills-category p {
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .experience-item ul {
@@ -339,6 +378,7 @@ h2 {
 .experience-item li {
     margin-bottom: 8px;
     line-height: 1.6;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* Education section */
@@ -517,6 +557,9 @@ h2 {
     margin: 0 0 8px;
     font-size: 20px;
     font-weight: 600;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .dark-mode .project-item h3 {
@@ -527,17 +570,20 @@ h2 {
     color: #666;
     font-size: 16px;
     margin: 0 0 12px;
+    min-height: 24px;
 }
 
 .project-item ul {
     list-style-type: disc;
     padding-left: 20px;
     margin: 0;
+    flex-grow: 1;
 }
 
 .project-item li {
     margin-bottom: 8px;
     line-height: 1.6;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .project-link {
@@ -638,6 +684,7 @@ h2 {
 .leadership-item li {
     margin-bottom: 8px;
     line-height: 1.6;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* Personal section */
@@ -657,6 +704,7 @@ h2 {
 .personal-info p {
     margin: 8px 0;
     line-height: 1.6;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* Dark mode adjustments */
