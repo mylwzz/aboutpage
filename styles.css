@@ -173,31 +173,54 @@ body {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 1;
     background-image:
-      radial-gradient(circle at 10% 20%, rgba(0,0,0,0.15) 0 2px, transparent 3px),
-      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.12) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 40% 70%, rgba(0,0,0,0.1) 0 2px, transparent 3px),
-      radial-gradient(circle at 65% 55%, rgba(0,0,0,0.13) 0 1.5px, transparent 2.5px);
+      radial-gradient(circle at 10% 20%, rgba(0,0,0,0.4) 0 3px, transparent 4px),
+      radial-gradient(circle at 80% 30%, rgba(0,0,0,0.35) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 40% 70%, rgba(0,0,0,0.3) 0 3px, transparent 4px),
+      radial-gradient(circle at 65% 55%, rgba(0,0,0,0.38) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 25% 50%, rgba(0,0,0,0.32) 0 2px, transparent 3px),
+      radial-gradient(circle at 90% 80%, rgba(0,0,0,0.35) 0 2.5px, transparent 3.5px);
     background-size: 200% 200%;
-    animation: sparkleFloat 3s linear infinite;
-    filter: blur(0.2px);
+    animation: sparkleFloat 4s ease-in-out infinite;
 }
 
 .dark-mode .invisible-ink::before {
     background-image:
-      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.18) 0 2px, transparent 3px),
-      radial-gradient(circle at 78% 32%, rgba(255,255,255,0.14) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 42% 72%, rgba(255,255,255,0.13) 0 2px, transparent 3px),
-      radial-gradient(circle at 60% 50%, rgba(255,255,255,0.16) 0 1.5px, transparent 2.5px);
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.45) 0 3px, transparent 4px),
+      radial-gradient(circle at 78% 32%, rgba(255,255,255,0.4) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 42% 72%, rgba(255,255,255,0.38) 0 3px, transparent 4px),
+      radial-gradient(circle at 60% 50%, rgba(255,255,255,0.42) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 28% 48%, rgba(255,255,255,0.36) 0 2px, transparent 3px),
+      radial-gradient(circle at 88% 82%, rgba(255,255,255,0.4) 0 2.5px, transparent 3.5px);
 }
 
-.invisible-ink:hover::before { opacity: 0; }
+.invisible-ink:hover::before { 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
 @keyframes sparkleFloat {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 100%; }
+    0% { 
+        background-position: 0% 0%;
+        opacity: 1;
+    }
+    25% {
+        background-position: 50% 30%;
+        opacity: 0.8;
+    }
+    50% { 
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+    75% {
+        background-position: 50% 80%;
+        opacity: 0.85;
+    }
+    100% { 
+        background-position: 0% 100%;
+        opacity: 1;
+    }
 }
 
 /* Profile Picture styles */
@@ -538,13 +561,12 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
     min-width: 425px;
     width: 425px;
     flex-shrink: 0;
     height: auto;
-    justify-content: space-between;
 }
 
 .project-item:hover {
@@ -557,9 +579,9 @@ h2 {
     margin: 0 0 8px;
     font-size: 20px;
     font-weight: 600;
-    min-height: 50px;
+    min-height: 65px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .dark-mode .project-item h3 {
@@ -570,14 +592,15 @@ h2 {
     color: #666;
     font-size: 16px;
     margin: 0 0 12px;
-    min-height: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
 }
 
 .project-item ul {
     list-style-type: disc;
     padding-left: 20px;
     margin: 0;
-    flex-grow: 1;
 }
 
 .project-item li {
@@ -797,4 +820,18 @@ h2 {
         padding: 10px 14px;
         font-size: 16px;
     }
+}
+
+/* Zoom-out for 2nd and 3rd project images */
+.projects-grid .project-item:nth-child(2) .project-image,
+.projects-grid .project-item:nth-child(3) .project-image {
+    object-fit: contain;
+    object-position: center;
+    background: #f8f9fa;
+    padding: 10px;
+}
+
+.dark-mode .projects-grid .project-item:nth-child(2) .project-image,
+.dark-mode .projects-grid .project-item:nth-child(3) .project-image {
+    background: rgba(255, 255, 255, 0.08);
 }
