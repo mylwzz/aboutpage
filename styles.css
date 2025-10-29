@@ -140,65 +140,83 @@ body {
     color: #d1d1d6;
 }
 
-/* Invisible Ink Effect */
+/* Invisible Ink Effect - Apple iMessage Style */
 .invisible-ink {
     font-size: 18px;
     line-height: 1.6;
     margin: 20px 0;
     padding: 10px 20px;
-    color: #f0f6ff;
-    transition: color 0.5s ease;
-    cursor: default;
+    color: #333;
+    cursor: pointer;
     font-style: italic;
     user-select: none;
     position: relative;
-}
-
-.invisible-ink:hover {
-    color: #333;
+    display: inline-block;
 }
 
 .dark-mode .invisible-ink {
-    color: #1e1e2f;
-    transition: color 0.5s ease;
-}
-
-.dark-mode .invisible-ink:hover {
     color: #d1d1d6;
 }
 
-/* Monochrome sparkle hint (disappears on hover) */
+/* Sparkle overlay that hides the text */
 .invisible-ink::before {
-    content: "✦ ✧ ⋆ ✦ ✧ ⋆ ✦ ✧ ⋆";
+    content: "";
     position: absolute;
-    inset: 0;
+    inset: -5px;
+    background: 
+        radial-gradient(circle, rgba(100,100,100,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(150,150,150,0.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(120,120,120,0.7) 1px, transparent 1px);
+    background-size: 15px 15px, 20px 20px, 25px 25px;
+    background-position: 0 0, 5px 5px, 10px 10px;
+    animation: sparkleMove 3s linear infinite;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 20px;
-    letter-spacing: 15px;
-    animation: sparkleFloat 3s ease-in-out infinite;
+    border-radius: 4px;
+    z-index: 1;
 }
 
 .dark-mode .invisible-ink::before {
-    color: rgba(255, 255, 255, 0.5);
+    background: 
+        radial-gradient(circle, rgba(200,200,200,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(220,220,220,0.7) 1px, transparent 1px);
+    background-size: 15px 15px, 20px 20px, 25px 25px;
+    background-position: 0 0, 5px 5px, 10px 10px;
 }
 
-.invisible-ink:hover::before { 
+/* Hide the text until hover */
+.invisible-ink::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    background: #f0f6ff;
+    pointer-events: none;
+    border-radius: 4px;
+    z-index: 0;
+}
+
+.dark-mode .invisible-ink::after {
+    background: #1e1e2f;
+}
+
+/* Show text on hover */
+.invisible-ink:hover::before,
+.invisible-ink:hover::after {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
-@keyframes sparkleFloat {
-    0%, 100% { 
-        opacity: 0.3;
-        transform: scale(1);
+.invisible-ink span {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes sparkleMove {
+    0% {
+        background-position: 0 0, 5px 5px, 10px 10px;
     }
-    50% { 
-        opacity: 0.7;
-        transform: scale(1.1);
+    100% {
+        background-position: 50px 50px, 55px 55px, 60px 60px;
     }
 }
 
