@@ -181,6 +181,69 @@ body {
     text-shadow: 0 0 5px rgba(220, 220, 220, 0.6);
 }
 
+/* Default movement fallback so every sparkle moves */
+.sparkle { animation: drift 3s ease-in-out infinite; }
+@keyframes drift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(4px,-6px) scale(1.06); }
+}
+
+/* Size/tint variety */
+.sparkle.small { font-size: 12px; opacity: 0.65; }
+.sparkle.medium { font-size: 14px; opacity: 0.75; }
+.sparkle.large { font-size: 18px; opacity: 0.85; }
+
+/* Light tints */
+.sparkle.tint-a { color: rgba(140,140,140,0.8); text-shadow: 0 0 3px rgba(140,140,140,0.5); }
+.sparkle.tint-b { color: rgba(170,170,170,0.85); text-shadow: 0 0 4px rgba(170,170,170,0.6); }
+.sparkle.tint-c { color: rgba(200,200,200,0.9); text-shadow: 0 0 5px rgba(200,200,200,0.6); }
+
+.dark-mode .sparkle.tint-a { color: rgba(200,200,200,0.8); text-shadow: 0 0 3px rgba(200,200,200,0.5); }
+.dark-mode .sparkle.tint-b { color: rgba(220,220,220,0.85); text-shadow: 0 0 4px rgba(220,220,220,0.6); }
+.dark-mode .sparkle.tint-c { color: rgba(245,245,245,0.9); text-shadow: 0 0 5px rgba(245,245,245,0.6); }
+
+/* Assign sizes/tints to existing sparkles for variety */
+/* Sizes */
+.sparkle-1,.sparkle-5,.sparkle-9,.sparkle-13,.sparkle-17,.sparkle-21,.sparkle-25,.sparkle-29,.sparkle-33 {
+    font-size: 12px; opacity: 0.70;
+}
+.sparkle-2,.sparkle-6,.sparkle-10,.sparkle-14,.sparkle-18,.sparkle-22,.sparkle-26,.sparkle-30,.sparkle-34 {
+    font-size: 14px; opacity: 0.78;
+}
+.sparkle-3,.sparkle-7,.sparkle-11,.sparkle-15,.sparkle-19,.sparkle-23,.sparkle-27,.sparkle-31,.sparkle-35 {
+    font-size: 18px; opacity: 0.86;
+}
+.sparkle-4,.sparkle-8,.sparkle-12,.sparkle-16,.sparkle-20,.sparkle-24,.sparkle-28,.sparkle-32,.sparkle-36 {
+    font-size: 16px; opacity: 0.74;
+}
+
+/* Tints */
+.sparkle-1,.sparkle-6,.sparkle-11,.sparkle-16,.sparkle-21,.sparkle-26,.sparkle-31,.sparkle-36 { color: rgba(140,140,140,0.9); text-shadow: 0 0 3px rgba(140,140,140,0.5); }
+.sparkle-2,.sparkle-7,.sparkle-12,.sparkle-17,.sparkle-22,.sparkle-27,.sparkle-32 { color: rgba(170,170,170,0.9); text-shadow: 0 0 4px rgba(170,170,170,0.6); }
+.sparkle-3,.sparkle-8,.sparkle-13,.sparkle-18,.sparkle-23,.sparkle-28,.sparkle-33 { color: rgba(200,200,200,0.95); text-shadow: 0 0 5px rgba(200,200,200,0.6); }
+.sparkle-4,.sparkle-9,.sparkle-14,.sparkle-19,.sparkle-24,.sparkle-29,.sparkle-34 { color: rgba(155,155,155,0.9); text-shadow: 0 0 3px rgba(155,155,155,0.5); }
+.sparkle-5,.sparkle-10,.sparkle-15,.sparkle-20,.sparkle-25,.sparkle-30,.sparkle-35 { color: rgba(185,185,185,0.92); text-shadow: 0 0 4px rgba(185,185,185,0.6); }
+
+.dark-mode .sparkle-1,.dark-mode .sparkle-6,.dark-mode .sparkle-11,.dark-mode .sparkle-16,.dark-mode .sparkle-21,.dark-mode .sparkle-26,.dark-mode .sparkle-31,.dark-mode .sparkle-36 { color: rgba(220,220,220,0.9); text-shadow: 0 0 4px rgba(220,220,220,0.6); }
+.dark-mode .sparkle-2,.dark-mode .sparkle-7,.dark-mode .sparkle-12,.dark-mode .sparkle-17,.dark-mode .sparkle-22,.dark-mode .sparkle-27,.dark-mode .sparkle-32 { color: rgba(235,235,235,0.9); text-shadow: 0 0 5px rgba(235,235,235,0.65); }
+.dark-mode .sparkle-3,.dark-mode .sparkle-8,.dark-mode .sparkle-13,.dark-mode .sparkle-18,.dark-mode .sparkle-23,.dark-mode .sparkle-28,.dark-mode .sparkle-33 { color: rgba(255,255,255,0.95); text-shadow: 0 0 6px rgba(255,255,255,0.7); }
+.dark-mode .sparkle-4,.dark-mode .sparkle-9,.dark-mode .sparkle-14,.dark-mode .sparkle-19,.dark-mode .sparkle-24,.dark-mode .sparkle-29,.dark-mode .sparkle-34 { color: rgba(230,230,230,0.92); text-shadow: 0 0 5px rgba(230,230,230,0.65); }
+.dark-mode .sparkle-5,.dark-mode .sparkle-10,.dark-mode .sparkle-15,.dark-mode .sparkle-20,.dark-mode .sparkle-25,.dark-mode .sparkle-30,.dark-mode .sparkle-35 { color: rgba(245,245,245,0.93); text-shadow: 0 0 5px rgba(245,245,245,0.68); }
+
+/* Positions & motion for 25–36 */
+.sparkle-25 { top: 14%; left: 12%; animation: float2 3.2s ease-in-out infinite 0.2s; }
+.sparkle-26 { top: 26%; left: 52%; animation: float6 2.7s ease-in-out infinite 0.35s; }
+.sparkle-27 { top: 8%;  left: 68%; animation: float9 3.1s ease-in-out infinite 0.1s; }
+.sparkle-28 { top: 46%; left: 22%; animation: float10 2.6s ease-in-out infinite 0.45s; }
+.sparkle-29 { top: 64%; left: 48%; animation: float11 3.3s ease-in-out infinite 0.25s; }
+.sparkle-30 { top: 84%; left: 58%; animation: float12 2.8s ease-in-out infinite 0.5s; }
+.sparkle-31 { top: 32%; left: 78%; animation: float8 3.0s ease-in-out infinite 0.3s; }
+.sparkle-32 { top: 68%; left: 72%; animation: float7 2.9s ease-in-out infinite 0.6s; }
+.sparkle-33 { top: 18%; left: 36%; animation: float5 3.4s ease-in-out infinite 0.4s; }
+.sparkle-34 { top: 52%; left: 62%; animation: float4 2.5s ease-in-out infinite 0.15s; }
+.sparkle-35 { top: 76%; left: 32%; animation: float3 3.2s ease-in-out infinite 0.55s; }
+.sparkle-36 { top: 6%;  left: 92%; animation: float1 2.7s ease-in-out infinite 0.2s; }
+
 /* Randomized positions - each sparkle at different location */
 .sparkle-1 { top: 15%; left: 8%; animation: float1 3s ease-in-out infinite; }
 .sparkle-2 { top: 25%; left: 45%; animation: float2 2.5s ease-in-out infinite 0.3s; }
@@ -832,14 +895,29 @@ h2 {
     color: #d1d1d6;
 }
 
-/* Focus pop for cards */
+/* Consistent transitions like project/experience cards */
+.education-item,
+.skills-category,
+.leadership-item,
+.personal-info {
+    transition: all 0.3s ease;
+}
+
+/* Match hover pop to project/experience */
 .education-item:hover,
 .skills-category:hover,
-.project-item:hover,
 .leadership-item:hover,
 .personal-info:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode shadow parity */
+.dark-mode .education-item:hover,
+.dark-mode .skills-category:hover,
+.dark-mode .leadership-item:hover,
+.dark-mode .personal-info:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Media Queries */
