@@ -455,15 +455,15 @@ h2 {
 }
 
 .link-icon {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     border: 2px solid currentColor;
     border-radius: 50%;
-    padding: 8px;
+    padding: 11px;
     box-sizing: border-box;
 }
 
@@ -784,13 +784,15 @@ h2 {
     max-width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
+    object-position: center center;
     border-radius: 8px;
-    margin: 12px 0;
+    margin: 12px auto;
     transition: transform 0.3s ease;
     display: block;
     height: auto;
     background: #f8f9fa;
-    padding: 20px;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 .project-image:hover {
