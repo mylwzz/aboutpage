@@ -1035,7 +1035,16 @@ h2 {
 
 /* Center the star field vertically a bit more and give it room */
 .invisible-ink { min-height: 3.2em; }
-.sparkle { margin-top: -8px; }
+
+/* Center text within the star field */
+.invisible-ink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove upward bias so stars and text align around the true middle */
+.sparkle { margin-top: 0; }
 
 /* Dramatic size spread: make some much smaller */
 /* Smaller set (8 stars) */
