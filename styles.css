@@ -146,82 +146,149 @@ body {
     line-height: 1.6;
     margin: 20px 0;
     padding: 8px 16px;
-    color: transparent !important;
     cursor: pointer;
     font-style: italic;
     user-select: none;
     position: relative;
     display: inline-block;
-    background: transparent;
     border-radius: 12px;
-    text-shadow: none;
 }
 
-.dark-mode .invisible-ink {
-    background: transparent;
+.ink-text {
+    color: transparent !important;
+    position: relative;
+    z-index: 1;
 }
 
-/* Sparkle overlay */
-.invisible-ink::before {
-    content: "✦ ✧ ⋆ ✦ ★ ✧ ⋆ ✦ ✧ ★ ⋆ ✦ ✧ ⋆ ★ ✦ ✧ ⋆ ✦ ★ ✧ ⋆";
+/* Individual sparkles - randomized positions */
+.sparkle {
     position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    color: rgba(100, 100, 100, 0.7);
-    font-size: 16px;
+    color: rgba(150, 150, 150, 0.8);
+    font-size: 14px;
     pointer-events: none;
-    animation: sparkleShine 2s ease-in-out infinite;
+    text-shadow: 0 0 4px rgba(150, 150, 150, 0.6);
     z-index: 2;
-    text-shadow: 0 0 2px rgba(100, 100, 100, 0.5);
-    overflow: hidden;
-    border-radius: 12px;
+    opacity: 0.7;
 }
 
-.dark-mode .invisible-ink::before {
-    color: rgba(200, 200, 200, 0.7);
-    text-shadow: 0 0 3px rgba(200, 200, 200, 0.5);
+.dark-mode .sparkle {
+    color: rgba(220, 220, 220, 0.8);
+    text-shadow: 0 0 5px rgba(220, 220, 220, 0.6);
 }
 
-/* Reveal text on hover */
-.invisible-ink:hover {
+/* Randomized positions - each sparkle at different location */
+.sparkle-1 { top: 15%; left: 8%; animation: float1 3s ease-in-out infinite; }
+.sparkle-2 { top: 25%; left: 45%; animation: float2 2.5s ease-in-out infinite 0.3s; }
+.sparkle-3 { top: 10%; left: 75%; animation: float3 3.2s ease-in-out infinite 0.1s; }
+.sparkle-4 { top: 50%; left: 15%; animation: float4 2.8s ease-in-out infinite 0.5s; }
+.sparkle-5 { top: 60%; left: 55%; animation: float5 3.1s ease-in-out infinite 0.2s; }
+.sparkle-6 { top: 45%; left: 85%; animation: float6 2.7s ease-in-out infinite 0.4s; }
+.sparkle-7 { top: 75%; left: 25%; animation: float7 3.3s ease-in-out infinite 0.6s; }
+.sparkle-8 { top: 80%; left: 65%; animation: float8 2.6s ease-in-out infinite 0.7s; }
+.sparkle-9 { top: 35%; left: 30%; animation: float9 2.9s ease-in-out infinite 0.15s; }
+.sparkle-10 { top: 20%; left: 60%; animation: float10 3.4s ease-in-out infinite 0.25s; }
+.sparkle-11 { top: 55%; left: 40%; animation: float11 2.4s ease-in-out infinite 0.35s; }
+.sparkle-12 { top: 70%; left: 90%; animation: float12 3.5s ease-in-out infinite 0.45s; }
+
+/* Reveal text and fade sparkles on hover */
+.invisible-ink:hover .ink-text {
     color: #333 !important;
+    transition: color 0.6s ease;
 }
 
-.dark-mode .invisible-ink:hover {
+.dark-mode .invisible-ink:hover .ink-text {
     color: #d1d1d6 !important;
 }
 
-.invisible-ink:hover::before {
-    animation: sparklesFadeOut 1s ease-out forwards;
+.invisible-ink:hover .sparkle {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-@keyframes sparkleShine {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.9;
-        transform: scale(1.1);
-    }
+/* Random floating animations - different distances and directions */
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(8px, -12px) scale(1.1); }
+    50% { transform: translate(-5px, -8px) scale(0.9); }
+    75% { transform: translate(12px, -4px) scale(1.05); }
 }
 
-@keyframes sparklesFadeOut {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.3);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(2);
-    }
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-10px, 10px) scale(1.15); }
+    50% { transform: translate(7px, 5px) scale(0.85); }
+    75% { transform: translate(-8px, 15px) scale(1.1); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(15px, -8px) scale(1.2); }
+    50% { transform: translate(-12px, -15px) scale(0.9); }
+    75% { transform: translate(10px, -5px) scale(1.05); }
+}
+
+@keyframes float4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-8px, 12px) scale(1.1); }
+    50% { transform: translate(10px, -6px) scale(0.95); }
+    75% { transform: translate(-5px, 8px) scale(1.08); }
+}
+
+@keyframes float5 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(6px, 14px) scale(1.15); }
+    50% { transform: translate(-14px, 3px) scale(0.88); }
+    75% { transform: translate(9px, 11px) scale(1.12); }
+}
+
+@keyframes float6 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-12px, -6px) scale(1.18); }
+    50% { transform: translate(11px, -13px) scale(0.92); }
+    75% { transform: translate(-7px, -3px) scale(1.06); }
+}
+
+@keyframes float7 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(9px, 13px) scale(1.22); }
+    50% { transform: translate(-9px, 7px) scale(0.86); }
+    75% { transform: translate(13px, 9px) scale(1.09); }
+}
+
+@keyframes float8 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-15px, 4px) scale(1.16); }
+    50% { transform: translate(8px, -11px) scale(0.91); }
+    75% { transform: translate(-10px, 6px) scale(1.13); }
+}
+
+@keyframes float9 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(11px, -9px) scale(1.14); }
+    50% { transform: translate(-7px, 12px) scale(0.93); }
+    75% { transform: translate(14px, -4px) scale(1.07); }
+}
+
+@keyframes float10 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-6px, -14px) scale(1.19); }
+    50% { transform: translate(12px, 8px) scale(0.87); }
+    75% { transform: translate(-4px, -9px) scale(1.11); }
+}
+
+@keyframes float11 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(7px, 11px) scale(1.17); }
+    50% { transform: translate(-11px, -7px) scale(0.89); }
+    75% { transform: translate(6px, 13px) scale(1.04); }
+}
+
+@keyframes float12 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-13px, 9px) scale(1.21); }
+    50% { transform: translate(9px, -10px) scale(0.94); }
+    75% { transform: translate(-14px, 5px) scale(1.08); }
 }
 
 /* Profile Picture styles */
