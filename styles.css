@@ -1032,3 +1032,28 @@ h2 {
 .sparkle-27 { font-size: 22px !important; }
 .sparkle-32 { font-size: 26px !important; }
 .sparkle-35 { font-size: 24px !important; }
+
+/* Center the star field vertically a bit more and give it room */
+.invisible-ink { min-height: 3.2em; }
+.sparkle { margin-top: -8px; }
+
+/* Dramatic size spread: make some much smaller */
+/* Smaller set (8 stars) */
+.sparkle-1,
+.sparkle-4,
+.sparkle-6,
+.sparkle-11,
+.sparkle-16,
+.sparkle-21,
+.sparkle-26,
+.sparkle-31 { font-size: 10px !important; opacity: 0.7; }
+
+/* Boost the bigger set even more (8 stars) */
+.sparkle-2  { font-size: 28px !important; }
+.sparkle-7  { font-size: 30px !important; }
+.sparkle-12 { font-size: 28px !important; }
+.sparkle-17 { font-size: 30px !important; }
+.sparkle-22 { font-size: 28px !important; }
+.sparkle-27 { font-size: 29px !important; }
+.sparkle-32 { font-size: 30px !important; }
+.sparkle-35 { font-size: 28px !important; }
