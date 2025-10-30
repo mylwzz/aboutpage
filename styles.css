@@ -995,3 +995,40 @@ h2 {
 .dark-mode .projects-grid .project-item:nth-child(3) .project-image {
     background: rgba(255, 255, 255, 0.08);
 }
+
+/* Highlight 8 evenly spaced bright sparkles */
+.sparkle-3,
+.sparkle-8,
+.sparkle-13,
+.sparkle-18,
+.sparkle-23,
+.sparkle-28,
+.sparkle-33,
+.sparkle-36 {
+    opacity: 1 !important;
+    color: rgba(220, 220, 220, 1) !important;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark-mode .sparkle-3,
+.dark-mode .sparkle-8,
+.dark-mode .sparkle-13,
+.dark-mode .sparkle-18,
+.dark-mode .sparkle-23,
+.dark-mode .sparkle-28,
+.dark-mode .sparkle-33,
+.dark-mode .sparkle-36 {
+    opacity: 1 !important;
+    color: rgba(255, 255, 255, 1) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 14px rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Bigger, evenly spaced stars (size emphasis) */
+.sparkle-2  { font-size: 22px !important; }
+.sparkle-7  { font-size: 24px !important; }
+.sparkle-12 { font-size: 22px !important; }
+.sparkle-17 { font-size: 26px !important; }
+.sparkle-22 { font-size: 24px !important; }
+.sparkle-27 { font-size: 22px !important; }
+.sparkle-32 { font-size: 26px !important; }
+.sparkle-35 { font-size: 24px !important; }
