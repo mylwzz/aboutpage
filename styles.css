@@ -51,14 +51,39 @@ body {
     left: 4px;
     top: 50%;
     transform: translateY(-50%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: sunReveal 0.8s ease-out forwards;
+}
+
+@keyframes sunReveal {
+    0% {
+        background-color: #F4E3C3;
+        box-shadow: inset -3px -3px 0px #D6BFA5;
+    }
+    100% {
+        background-color: #FFD700;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .toggle-button.dark .sun-moon {
     background-color: #F4E3C3;
     transform: translate(30px, -50%);
-    box-shadow: inset -3px -3px 0px #D6BFA5;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 0 transparent;
+    animation: moonReveal 0.8s ease-out forwards;
+}
+
+@keyframes moonReveal {
+    0% {
+        background-color: #FFD700;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        background-color: #F4E3C3;
+        box-shadow: inset -3px -3px 0px #D6BFA5;
+    }
 }
 
 /* Stars & Clouds Container */
@@ -448,10 +473,19 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.link-item .link-icon {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
 .link-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     color: #FFD700;
+}
+
+.link-item:hover .link-icon {
+    transform: scale(0.85) scale(1.05);
+    filter: brightness(1.2);
 }
 
 .link-icon {
@@ -465,6 +499,7 @@ h2 {
     border-radius: 50%;
     padding: 11px;
     box-sizing: border-box;
+    transform: scale(0.85);
 }
 
 .link-text {
@@ -482,6 +517,11 @@ h2 {
 .dark-mode .link-item:hover {
     color: #FF0000;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .link-item:hover .link-icon {
+    transform: scale(0.85) scale(1.05);
+    filter: brightness(1.3);
 }
 
 /* Experience section */
