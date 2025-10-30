@@ -154,10 +154,15 @@ body {
     border-radius: 12px;
 }
 
+/* Crossfade text reveal */
 .ink-text {
-    color: transparent !important;
-    position: relative;
-    z-index: 1;
+    color: inherit !important;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+
+.invisible-ink:hover .ink-text {
+    opacity: 1;
 }
 
 /* Individual sparkles - randomized positions */
@@ -191,15 +196,6 @@ body {
 .sparkle-12 { top: 70%; left: 90%; animation: float12 3.5s ease-in-out infinite 0.45s; }
 
 /* Reveal text and fade sparkles on hover */
-.invisible-ink:hover .ink-text {
-    color: #333 !important;
-    transition: color 0.6s ease;
-}
-
-.dark-mode .invisible-ink:hover .ink-text {
-    color: #d1d1d6 !important;
-}
-
 .invisible-ink:hover .sparkle {
     opacity: 0 !important;
     transform: scale(0) !important;
@@ -820,6 +816,16 @@ h2 {
 .dark-mode .education-item .awards,
 .dark-mode .leadership-item .role {
     color: #d1d1d6;
+}
+
+/* Focus pop for cards */
+.education-item:hover,
+.skills-category:hover,
+.project-item:hover,
+.leadership-item:hover,
+.personal-info:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
 
 /* Media Queries */
