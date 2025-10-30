@@ -195,6 +195,20 @@ body {
 .sparkle-11 { top: 55%; left: 40%; animation: float11 2.4s ease-in-out infinite 0.35s; }
 .sparkle-12 { top: 70%; left: 90%; animation: float12 3.5s ease-in-out infinite 0.45s; }
 
+/* Extra sparkles (13–24) */
+.sparkle-13 { top: 12%; left: 22%; animation: float6 3s ease-in-out infinite 0.2s; }
+.sparkle-14 { top: 28%; left: 70%; animation: float7 2.6s ease-in-out infinite 0.35s; }
+.sparkle-15 { top: 42%; left: 8%;  animation: float3 3.1s ease-in-out infinite 0.15s; }
+.sparkle-16 { top: 18%; left: 55%; animation: float5 2.9s ease-in-out infinite 0.4s; }
+.sparkle-17 { top: 66%; left: 18%; animation: float8 3.3s ease-in-out infinite 0.25s; }
+.sparkle-18 { top: 82%; left: 48%; animation: float2 2.7s ease-in-out infinite 0.5s; }
+.sparkle-19 { top: 38%; left: 82%; animation: float4 3.2s ease-in-out infinite 0.3s; }
+.sparkle-20 { top: 72%; left: 72%; animation: float1 2.8s ease-in-out infinite 0.6s; }
+.sparkle-21 { top: 22%; left: 34%; animation: float9 3.4s ease-in-out infinite 0.45s; }
+.sparkle-22 { top: 58%; left: 64%; animation: float10 2.5s ease-in-out infinite 0.1s; }
+.sparkle-23 { top: 78%; left: 36%; animation: float11 3.0s ease-in-out infinite 0.55s; }
+.sparkle-24 { top: 8%;  left: 88%; animation: float12 2.6s ease-in-out infinite 0.2s; }
+
 /* Reveal text and fade sparkles on hover */
 .invisible-ink:hover .sparkle {
     opacity: 0 !important;
@@ -824,8 +838,8 @@ h2 {
 .project-item:hover,
 .leadership-item:hover,
 .personal-info:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Media Queries */
