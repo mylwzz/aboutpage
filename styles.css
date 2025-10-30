@@ -1,4 +1,9 @@
 /* General Styles */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     background-color: #f0f6ff;
     color: #333;
@@ -642,9 +647,10 @@ h2 {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 0 60px;
+    padding: 0 40px;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .dark-mode #projects h2 {
@@ -657,12 +663,13 @@ h2 {
     gap: 40px;
     overflow-x: visible;
     overflow-y: hidden;
-    padding: 20px 0 40px;
+    padding: 20px 10px 40px 10px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
+    min-width: min-content;
 }
 
 .projects-grid::-webkit-scrollbar {
@@ -921,6 +928,40 @@ h2 {
 }
 
 /* Media Queries */
+/* Responsive breakpoint for 11-13 inch screens (1024-1440px) */
+@media (max-width: 1440px) {
+    .projects-container {
+        padding: 0 30px;
+        overflow-x: auto;
+    }
+    
+    .project-item {
+        min-width: 380px;
+        width: 380px;
+    }
+    
+    .projects-grid {
+        justify-content: flex-start;
+        overflow-x: visible;
+    }
+}
+
+@media (max-width: 1024px) {
+    .projects-container {
+        padding: 0 20px;
+        overflow-x: auto;
+    }
+    
+    .project-item {
+        min-width: 350px;
+        width: 350px;
+    }
+    
+    .projects-grid {
+        justify-content: flex-start;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
