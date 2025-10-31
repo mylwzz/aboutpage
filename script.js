@@ -2,10 +2,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleSwitch = document.getElementById("theme-toggle");
     const body = document.body;
 
-    // Theme
-    if (localStorage.getItem("theme") === "dark") {
+    // Theme - default to dark mode if no preference saved
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        // User explicitly chose light mode, don't add dark-mode
+    } else {
+        // Default to dark mode (either no preference or "dark")
         body.classList.add("dark-mode");
         toggleSwitch.classList.add("dark");
+        if (!savedTheme) {
+            localStorage.setItem("theme", "dark");
+        }
     }
 
     // Toggle theme (switch)
