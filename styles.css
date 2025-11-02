@@ -51,30 +51,14 @@ body {
     left: 4px;
     top: 50%;
     transform: translateY(-50%);
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Shading overlay for moon phase - fades opacity both ways */
-.sun-moon::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    box-shadow: inset -3px -3px 0px #D6BFA5;
-    opacity: 0;
-    transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    pointer-events: none;
 }
 
 .toggle-button.dark .sun-moon {
     background-color: #F4E3C3;
     transform: translate(30px, -50%);
-    box-shadow: none;
-}
-
-.toggle-button.dark .sun-moon::after {
-    opacity: 1;
+    box-shadow: inset -3px -3px 0px #D6BFA5;
 }
 
 /* Stars & Clouds Container */
