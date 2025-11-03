@@ -460,9 +460,6 @@ h2 {
     color: #FFD700;
 }
 
-.link-item:hover .link-icon {
-    filter: brightness(1.2);
-}
 
 .link-icon {
     width: 44px;
@@ -494,9 +491,6 @@ h2 {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.dark-mode .link-item:hover .link-icon {
-    filter: brightness(1.3);
-}
 
 /* Experience section */
 #experience {
@@ -661,10 +655,9 @@ h2 {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 0 40px;
+    padding: 0;
     box-sizing: border-box;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .dark-mode #projects h2 {
@@ -674,43 +667,17 @@ h2 {
 
 .projects-grid {
     display: flex;
-    gap: 40px;
-    overflow-x: visible;
+    gap: 0;
+    overflow-x: auto;
     overflow-y: hidden;
-    padding: 20px 10px 40px 10px;
+    padding: 60px 0 100px 0;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    justify-content: center;
-    align-items: stretch;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: nowrap;
-    min-width: min-content;
-}
-
-.projects-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.projects-grid::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-}
-
-.projects-grid::-webkit-scrollbar-thumb {
-    background: #FF0000;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-}
-
-.projects-grid::-webkit-scrollbar-thumb:hover {
-    background: #FFD700;
-}
-
-.dark-mode .projects-grid::-webkit-scrollbar-thumb {
-    background: #FFD700;
-}
-
-.dark-mode .projects-grid::-webkit-scrollbar-thumb:hover {
-    background: #FF0000;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 calc(50vw - 212.5px);
 }
 
 .project-item {
@@ -729,11 +696,47 @@ h2 {
     width: 425px;
     flex-shrink: 0;
     height: auto;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transform-origin: center;
+    opacity: 0.6;
+    transform: scale(0.85);
 }
 
 .project-item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Carousel dots indicator */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .dot {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.dot.active {
+    background: #FF0000;
+    transform: scale(1.3);
+}
+
+.dark-mode .dot.active {
+    background: #FFD700;
 }
 
 .project-item h3 {

@@ -28,25 +28,62 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Projects scroll limits
+    // Carousel functionality
     const projectsGrid = document.querySelector('.projects-grid');
-    if (projectsGrid) {
+    const dots = document.querySelectorAll('.dot');
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    if (projectsGrid && dots.length > 0) {
+        // Update active dot and card transforms based on scroll
         projectsGrid.addEventListener('scroll', function() {
-            const maxScroll = projectsGrid.scrollWidth - projectsGrid.clientWidth;
-            const currentScroll = projectsGrid.scrollLeft;
+            const containerWidth = projectsGrid.clientWidth;
+            const scrollLeft = projectsGrid.scrollLeft;
             
-            // Add some padding so projects don't scroll completely off screen
-            const buffer = 100;
+            projectItems.forEach((item, index) => {
+                const itemLeft = item.offsetLeft;
+                const itemWidth = item.offsetWidth;
+                const itemCenter = itemLeft + (itemWidth / 2);
+                const containerCenter = scrollLeft + (containerWidth / 2);
+                const distance = Math.abs(itemCenter - containerCenter);
+                const maxDistance = containerWidth / 2;
+                
+                if (distance < maxDistance / 2) {
+                    // Item is in center - make it fully visible
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                } else if (distance < maxDistance) {
+                    // Item is partially visible - fade and scale
+                    const scale = 0.85 + (0.15 * (1 - distance / maxDistance));
+                    const opacity = 0.6 + (0.4 * (1 - distance / maxDistance));
+                    item.style.opacity = opacity;
+                    item.style.transform = `scale(${scale})`;
+                } else {
+                    // Item is far away
+                    item.style.opacity = '0.6';
+                    item.style.transform = 'scale(0.85)';
+                }
+            });
             
-            // Prevent scrolling too far left (keep some of first project visible)
-            if (currentScroll < -buffer) {
-                projectsGrid.scrollLeft = -buffer;
-            }
-            
-            // Prevent scrolling too far right (keep some of last project visible)
-            if (currentScroll > maxScroll + buffer) {
-                projectsGrid.scrollLeft = maxScroll + buffer;
-            }
+            // Update active dot
+            const currentIndex = Math.round(scrollLeft / (425 + 0)); // 425px width + 0 gap
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+        
+        // Dot click navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                const targetScroll = index * 425; // 425px per project
+                projectsGrid.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
+            });
         });
     }
 });
