@@ -715,36 +715,6 @@ h2 {
     opacity: 1 !important;
 }
 
-/* Carousel dots indicator */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dark-mode .dot {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.dot.active {
-    background: #FF0000;
-    transform: scale(1.3);
-}
-
-.dark-mode .dot.active {
-    background: #FFD700;
-}
 
 /* Project card styling */
 .project-item > * {
@@ -752,24 +722,22 @@ h2 {
 }
 
 .project-item h3 {
-    color: #333;
-    margin: 20px 0 12px;
-    font-size: 24px;
+    --fill-width: 0%;
+    color: rgba(51, 51, 51, 0.3);
+    margin: 24px 0 8px;
+    font-size: 22px;
     font-weight: 700;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    line-height: 1.3;
+    max-width: 425px;
 }
 
 .dark-mode .project-item h3 {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.3);
 }
 
-/* Text fill effect */
-.project-item h3 {
-    --fill-width: 0%;
-}
-
+/* Text fill effect with mask */
 .project-item h3::before {
     content: attr(data-text);
     position: absolute;
@@ -779,6 +747,7 @@ h2 {
     overflow: hidden;
     color: #FF0000;
     white-space: nowrap;
+    font-weight: 700;
 }
 
 .dark-mode .project-item h3::before {
@@ -786,10 +755,16 @@ h2 {
 }
 
 .project-item .tech-stack {
-    color: #666;
-    font-size: 14px;
-    margin: 0 0 12px;
+    color: #888;
+    font-size: 13px;
+    margin: 0;
     text-align: center;
+    opacity: 0.7;
+    max-width: 425px;
+}
+
+.dark-mode .project-item .tech-stack {
+    color: #aaa;
 }
 
 .project-item ul {
@@ -1044,19 +1019,6 @@ h2 {
     }
 }
 
-/* Zoom-out for 2nd and 3rd project images */
-.projects-grid .project-item:nth-child(2) .project-image,
-.projects-grid .project-item:nth-child(3) .project-image {
-    object-fit: contain;
-    object-position: center;
-    background: #f8f9fa;
-    padding: 10px;
-}
-
-.dark-mode .projects-grid .project-item:nth-child(2) .project-image,
-.dark-mode .projects-grid .project-item:nth-child(3) .project-image {
-    background: rgba(255, 255, 255, 0.08);
-}
 
 /* Highlight 8 evenly spaced bright sparkles */
 .sparkle-3,
