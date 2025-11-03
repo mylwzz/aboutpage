@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             
             // Update active dot (if exists)
-            const itemWidth = 500 + 80; // width + gap
+            const itemWidth = 450 + 80; // width + gap
             const currentIndex = Math.round(scrollLeft / itemWidth);
             if (dots && dots.length > 0) {
                 dots.forEach((dot, index) => {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (dots && dots.length > 0) {
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', function() {
-                    const targetScroll = index * (500 + 80); // width + gap
+                    const targetScroll = index * (450 + 80); // width + gap
                     projectsGrid.scrollTo({
                         left: targetScroll,
                         behavior: 'smooth'

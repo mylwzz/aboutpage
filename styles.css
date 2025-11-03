@@ -136,7 +136,7 @@ body {
 
 #profile p {
     font-size: 20px;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #444;
     margin: 16px 0;
 }
@@ -554,7 +554,7 @@ h2 {
 
 .experience-item li {
     margin-bottom: 8px;
-    line-height: 1.6;
+    line-height: 1.8;
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -688,43 +688,70 @@ h2 {
 
 .project-item {
     margin-bottom: 0;
-    padding: 30px;
+    padding: 25px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-    display: grid;
-    grid-template-rows: 65px 24px 425px 1fr auto;
-    min-width: 500px;
-    width: 500px;
-    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+    width: 450px;
     flex-shrink: 0;
     scroll-snap-align: center;
     transform-style: preserve-3d;
     transform-origin: center center;
-    opacity: 0.6;
-    transform: rotateY(25deg) scale(0.85) translateZ(-250px);
 }
 
 .project-item:hover {
-    transform: rotateY(0deg) scale(1) translateZ(0px) !important;
-    opacity: 1 !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .dark-mode .project-item {
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .project-item:hover {
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+
+/* Carousel dots indicator */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .dot {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.dot.active {
+    background: #FF0000;
+    transform: scale(1.3);
+}
+
+.dark-mode .dot.active {
+    background: #FFD700;
+}
 
 /* Project card styling */
 .project-item > * {
@@ -732,48 +759,24 @@ h2 {
 }
 
 .project-item h3 {
-    color: #888;
-    margin: 0;
+    color: #333;
+    margin: 0 0 8px;
     font-size: 20px;
     font-weight: 600;
-    height: 65px;
-    display: flex;
-    align-items: flex-start;
-    transition: color 0.3s ease;
-}
-
-.project-item:hover h3 {
-    color: #333;
 }
 
 .dark-mode .project-item h3 {
-    color: #888;
-}
-
-.dark-mode .project-item:hover h3 {
     color: #ffffff;
 }
 
 .project-item .tech-stack {
-    color: #888;
-    font-size: 16px;
-    margin: 0;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s ease;
-}
-
-.project-item:hover .tech-stack {
     color: #666;
+    font-size: 16px;
+    margin: 0 0 12px;
 }
 
 .dark-mode .project-item .tech-stack {
-    color: #888;
-}
-
-.dark-mode .project-item:hover .tech-stack {
-    color: #aaa;
+    color: #a1a1a6;
 }
 
 .project-item ul {
@@ -784,21 +787,11 @@ h2 {
 
 .project-item li {
     margin-bottom: 8px;
-    line-height: 1.6;
+    line-height: 1.7;
     font-family: 'Nunito Sans', sans-serif;
-    color: #888;
-    transition: color 0.3s ease;
-}
-
-.project-item:hover li {
-    color: #444;
 }
 
 .dark-mode .project-item li {
-    color: #888;
-}
-
-.dark-mode .project-item:hover li {
     color: #d1d1d6;
 }
 
@@ -806,42 +799,45 @@ h2 {
     display: inline-block;
     margin-top: auto;
     padding-top: 16px;
-    color: #888;
+    color: #333;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
-.project-item:hover .project-link {
-    color: #333;
-}
-
 .project-link:hover {
-    color: #666 !important;
+    color: #666;
 }
 
 .dark-mode .project-link {
-    color: #888;
-}
-
-.dark-mode .project-item:hover .project-link {
     color: #ffffff;
 }
 
 .dark-mode .project-link:hover {
-    color: #d1d1d6 !important;
+    color: #d1d1d6;
 }
 
 .project-image {
     width: 100%;
-    height: 425px;
     aspect-ratio: 1;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
     border-radius: 8px;
-    margin: 0;
+    margin: 12px 0;
     transition: transform 0.3s ease;
     display: block;
+    background: #f8f9fa;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.dark-mode .project-image {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* First project (tweets) - no extra padding needed */
+.project-item:first-child .project-image {
+    padding: 20px;
 }
 
 /* Leadership section */
