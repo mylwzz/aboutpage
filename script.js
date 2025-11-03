@@ -96,5 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
         }
+        
+        // Click project card to center it
+        projectItems.forEach((item, index) => {
+            item.addEventListener('click', function(e) {
+                // Don't trigger if clicking a link
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                
+                const targetScroll = index * (450 + 80); // width + gap
+                projectsGrid.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
+            });
+        });
     }
 });

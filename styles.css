@@ -692,7 +692,7 @@ h2 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
@@ -700,10 +700,12 @@ h2 {
     flex-direction: column;
     min-width: 450px;
     width: 450px;
+    min-height: 750px;
     flex-shrink: 0;
     scroll-snap-align: center;
     transform-style: preserve-3d;
     transform-origin: center center;
+    cursor: pointer;
 }
 
 .project-item:hover {
@@ -798,7 +800,7 @@ h2 {
 .project-link {
     display: inline-block;
     margin-top: auto;
-    padding-top: 16px;
+    padding-top: 24px;
     color: #333;
     text-decoration: none;
     font-weight: 500;
@@ -826,7 +828,7 @@ h2 {
     margin: 12px 0;
     transition: transform 0.3s ease;
     display: block;
-    background: #f8f9fa;
+    background: #ffffff;
     padding: 20px;
     box-sizing: border-box;
 }
