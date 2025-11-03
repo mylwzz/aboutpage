@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
             
-            // Update active dot
-            const itemWidth = 425 + 80; // width + gap
+            // Update active dot (if exists)
+            const itemWidth = 500 + 80; // width + gap
             const currentIndex = Math.round(scrollLeft / itemWidth);
-            if (dots.length > 0) {
+            if (dots && dots.length > 0) {
                 dots.forEach((dot, index) => {
                     if (index === currentIndex) {
                         dot.classList.add('active');
@@ -84,15 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Initial update
         updateCarousel();
         
-        // Dot click navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
-                const targetScroll = index * (425 + 80); // width + gap
-                projectsGrid.scrollTo({
-                    left: targetScroll,
-                    behavior: 'smooth'
+        // Dot click navigation (if exists)
+        if (dots && dots.length > 0) {
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    const targetScroll = index * (500 + 80); // width + gap
+                    projectsGrid.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
+        }
     }
 });
