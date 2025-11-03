@@ -655,9 +655,10 @@ h2 {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 0;
+    padding: 60px 0;
     box-sizing: border-box;
     overflow: hidden;
+    perspective: 1500px;
 }
 
 .dark-mode #projects h2 {
@@ -667,45 +668,51 @@ h2 {
 
 .projects-grid {
     display: flex;
-    gap: 0;
+    gap: 80px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 60px 0 100px 0;
+    padding: 40px calc(50vw - 212.5px) 60px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     scroll-snap-type: x mandatory;
-    scroll-padding: 0 calc(50vw - 212.5px);
+    transform-style: preserve-3d;
+}
+
+/* Hide scrollbar */
+.projects-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .project-item {
     margin-bottom: 0;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
     position: relative;
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-width: 425px;
     width: 425px;
     flex-shrink: 0;
     height: auto;
     scroll-snap-align: center;
-    scroll-snap-stop: always;
-    transform-origin: center;
-    opacity: 0.6;
-    transform: scale(0.85);
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    opacity: 0.5;
+    transform: rotateY(25deg) scale(0.8) translateZ(-200px);
 }
 
 .project-item:hover {
-    transform: translateY(-2px) scale(1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: rotateY(0deg) scale(1.05) translateZ(50px) !important;
+    opacity: 1 !important;
 }
 
 /* Carousel dots indicator */
@@ -739,85 +746,80 @@ h2 {
     background: #FFD700;
 }
 
+/* Project card styling */
+.project-item > * {
+    transform-style: preserve-3d;
+}
+
 .project-item h3 {
     color: #333;
-    margin: 0 0 8px;
-    font-size: 20px;
-    font-weight: 600;
-    min-height: 65px;
-    display: flex;
-    align-items: flex-start;
+    margin: 20px 0 12px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .dark-mode .project-item h3 {
     color: #ffffff;
 }
 
+/* Text fill effect */
+.project-item h3 {
+    --fill-width: 0%;
+}
+
+.project-item h3::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--fill-width, 0%);
+    overflow: hidden;
+    color: #FF0000;
+    white-space: nowrap;
+}
+
+.dark-mode .project-item h3::before {
+    color: #FFD700;
+}
+
 .project-item .tech-stack {
     color: #666;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 0 12px;
-    height: 24px;
-    display: flex;
-    align-items: center;
+    text-align: center;
 }
 
 .project-item ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 0;
+    display: none;
 }
 
 .project-item li {
-    margin-bottom: 8px;
-    line-height: 1.6;
-    font-family: 'Nunito Sans', sans-serif;
+    display: none;
 }
 
 .project-link {
-    display: inline-block;
-    margin-top: auto;
-    padding-top: 16px;
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.project-link:hover {
-    color: #666;
-}
-
-.dark-mode .project-link {
-    color: #ffffff;
-}
-
-.dark-mode .project-link:hover {
-    color: #d1d1d6;
+    display: none;
 }
 
 .project-image {
-    width: 100%;
-    max-width: 100%;
+    width: 425px;
+    height: 425px;
     aspect-ratio: 1;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
-    border-radius: 8px;
-    margin: 12px auto;
-    transition: transform 0.3s ease;
+    border-radius: 16px;
+    margin: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
-    height: auto;
-    background: #f8f9fa;
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-.project-image:hover {
-    transform: scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
 }
 
 .dark-mode .project-image {
-    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 /* Leadership section */

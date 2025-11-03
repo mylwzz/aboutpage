@@ -28,57 +28,66 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Carousel functionality
+    // 3D Carousel functionality
     const projectsGrid = document.querySelector('.projects-grid');
     const dots = document.querySelectorAll('.dot');
     const projectItems = document.querySelectorAll('.project-item');
     
-    if (projectsGrid && dots.length > 0) {
-        // Update active dot and card transforms based on scroll
-        projectsGrid.addEventListener('scroll', function() {
+    if (projectsGrid && projectItems.length > 0) {
+        function updateCarousel() {
             const containerWidth = projectsGrid.clientWidth;
             const scrollLeft = projectsGrid.scrollLeft;
+            const containerCenter = scrollLeft + (containerWidth / 2);
             
             projectItems.forEach((item, index) => {
                 const itemLeft = item.offsetLeft;
                 const itemWidth = item.offsetWidth;
                 const itemCenter = itemLeft + (itemWidth / 2);
-                const containerCenter = scrollLeft + (containerWidth / 2);
-                const distance = Math.abs(itemCenter - containerCenter);
-                const maxDistance = containerWidth / 2;
+                const distanceFromCenter = itemCenter - containerCenter;
+                const normalizedDistance = distanceFromCenter / containerWidth;
                 
-                if (distance < maxDistance / 2) {
-                    // Item is in center - make it fully visible
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                } else if (distance < maxDistance) {
-                    // Item is partially visible - fade and scale
-                    const scale = 0.85 + (0.15 * (1 - distance / maxDistance));
-                    const opacity = 0.6 + (0.4 * (1 - distance / maxDistance));
-                    item.style.opacity = opacity;
-                    item.style.transform = `scale(${scale})`;
-                } else {
-                    // Item is far away
-                    item.style.opacity = '0.6';
-                    item.style.transform = 'scale(0.85)';
+                // Calculate 3D transforms
+                const rotationY = normalizedDistance * 35; // Max 35deg rotation
+                const scale = Math.max(0.75, 1 - Math.abs(normalizedDistance) * 0.3);
+                const opacity = Math.max(0.4, 1 - Math.abs(normalizedDistance) * 0.8);
+                const translateZ = Math.abs(normalizedDistance) < 0.3 ? 0 : -200 * Math.abs(normalizedDistance);
+                
+                // Apply 3D transform
+                item.style.opacity = opacity;
+                item.style.transform = `rotateY(${rotationY}deg) scale(${scale}) translateZ(${translateZ}px)`;
+                
+                // Text fill effect based on proximity to center
+                const fillPercent = Math.max(0, Math.min(100, 100 - Math.abs(normalizedDistance) * 200));
+                const h3 = item.querySelector('h3');
+                if (h3) {
+                    h3.style.setProperty('--fill-width', `${fillPercent}%`);
                 }
             });
             
             // Update active dot
-            const currentIndex = Math.round(scrollLeft / (425 + 0)); // 425px width + 0 gap
-            dots.forEach((dot, index) => {
-                if (index === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        });
+            const itemWidth = 425 + 80; // width + gap
+            const currentIndex = Math.round(scrollLeft / itemWidth);
+            if (dots.length > 0) {
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // Update on scroll
+        projectsGrid.addEventListener('scroll', updateCarousel);
+        
+        // Initial update
+        updateCarousel();
         
         // Dot click navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', function() {
-                const targetScroll = index * 425; // 425px per project
+                const targetScroll = index * (425 + 80); // width + gap
                 projectsGrid.scrollTo({
                     left: targetScroll,
                     behavior: 'smooth'
