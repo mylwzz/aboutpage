@@ -677,9 +677,10 @@ h2 {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    scroll-snap-type: x mandatory;
-    scroll-snap-stop: always;
+    scroll-snap-type: x proximity;
+    scroll-snap-stop: normal;
     transform-style: preserve-3d;
+    scroll-padding: 0 calc(50vw - 225px);
 }
 
 /* Hide scrollbar */
@@ -693,7 +694,7 @@ h2 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.35s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
@@ -704,10 +705,11 @@ h2 {
     min-height: 750px;
     flex-shrink: 0;
     scroll-snap-align: center;
-    scroll-snap-stop: always;
+    scroll-snap-stop: normal;
     transform-style: preserve-3d;
     transform-origin: center center;
     cursor: pointer;
+    will-change: transform, opacity;
 }
 
 .project-item:hover {

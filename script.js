@@ -78,8 +78,53 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         
-        // Update on scroll
-        projectsGrid.addEventListener('scroll', updateCarousel);
+        // Smooth scroll end handling for better snap
+        let scrollTimeout;
+        let isScrolling = false;
+        
+        // Combined scroll handler
+        projectsGrid.addEventListener('scroll', function() {
+            // Update carousel visuals immediately
+            updateCarousel();
+            
+            // Handle smooth snap after scroll ends
+            clearTimeout(scrollTimeout);
+            isScrolling = true;
+            
+            scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+                // Gentle snap to nearest card when scroll stops
+                const containerWidth = projectsGrid.clientWidth;
+                const scrollLeft = projectsGrid.scrollLeft;
+                const containerCenter = scrollLeft + (containerWidth / 2);
+                
+                let closestItem = null;
+                let closestDistance = Infinity;
+                
+                projectItems.forEach((item) => {
+                    const itemLeft = item.offsetLeft;
+                    const itemWidth = item.offsetWidth;
+                    const itemCenter = itemLeft + (itemWidth / 2);
+                    const distance = Math.abs(itemCenter - containerCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestItem = item;
+                    }
+                });
+                
+                // Only snap if significantly off-center (threshold: 50px)
+                if (closestItem && closestDistance > 50) {
+                    const itemIndex = Array.from(projectItems).indexOf(closestItem);
+                    const itemWidth = 450 + 80;
+                    const targetScroll = (itemIndex * itemWidth) - (containerWidth / 2) + (450 / 2);
+                    projectsGrid.scrollTo({
+                        left: Math.max(0, targetScroll),
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        });
         
         // Initial update
         updateCarousel();
@@ -88,9 +133,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (dots && dots.length > 0) {
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', function() {
-                    const targetScroll = index * (450 + 80); // width + gap
+                    const itemWidth = 450 + 80; // width + gap
+                    const containerWidth = projectsGrid.clientWidth;
+                    const targetScroll = (index * itemWidth) - (containerWidth / 2) + (450 / 2);
                     projectsGrid.scrollTo({
-                        left: targetScroll,
+                        left: Math.max(0, targetScroll),
                         behavior: 'smooth'
                     });
                 });
@@ -103,9 +150,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Don't trigger if clicking a link
                 if (e.target.tagName === 'A' || e.target.closest('a')) return;
                 
-                const targetScroll = index * (450 + 80); // width + gap
+                const itemWidth = 450 + 80; // width + gap
+                const containerWidth = projectsGrid.clientWidth;
+                const targetScroll = (index * itemWidth) - (containerWidth / 2) + (450 / 2);
                 projectsGrid.scrollTo({
-                    left: targetScroll,
+                    left: Math.max(0, targetScroll),
                     behavior: 'smooth'
                 });
             });
