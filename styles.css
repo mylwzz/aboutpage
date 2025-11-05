@@ -671,13 +671,14 @@ h2 {
     gap: 80px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 40px calc(50vw - 212.5px) 60px;
+    padding: 40px calc(50vw - 225px) 60px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
     transform-style: preserve-3d;
 }
 
@@ -692,7 +693,7 @@ h2 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.15s ease;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
@@ -703,6 +704,7 @@ h2 {
     min-height: 750px;
     flex-shrink: 0;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
     transform-style: preserve-3d;
     transform-origin: center center;
     cursor: pointer;
