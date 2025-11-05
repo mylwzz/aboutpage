@@ -28,136 +28,53 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 3D Carousel functionality
-    const projectsGrid = document.querySelector('.projects-grid');
-    const dots = document.querySelectorAll('.dot');
-    const projectItems = document.querySelectorAll('.project-item');
-    
-    if (projectsGrid && projectItems.length > 0) {
-        function updateCarousel() {
-            const containerWidth = projectsGrid.clientWidth;
-            const scrollLeft = projectsGrid.scrollLeft;
-            const containerCenter = scrollLeft + (containerWidth / 2);
-            
-            projectItems.forEach((item, index) => {
-                const itemLeft = item.offsetLeft;
-                const itemWidth = item.offsetWidth;
-                const itemCenter = itemLeft + (itemWidth / 2);
-                const distanceFromCenter = itemCenter - containerCenter;
-                const normalizedDistance = distanceFromCenter / containerWidth;
-                
-                // Calculate 3D transforms
-                const rotationY = normalizedDistance * 35; // Max 35deg rotation
-                const scale = Math.max(0.75, 1 - Math.abs(normalizedDistance) * 0.3);
-                const opacity = Math.max(0.4, 1 - Math.abs(normalizedDistance) * 0.8);
-                const translateZ = Math.abs(normalizedDistance) < 0.3 ? 0 : -200 * Math.abs(normalizedDistance);
-                
-                // Apply 3D transform
-                item.style.opacity = opacity;
-                item.style.transform = `rotateY(${rotationY}deg) scale(${scale}) translateZ(${translateZ}px)`;
-                
-                // Text fill effect based on proximity to center
-                const fillPercent = Math.max(0, Math.min(100, 100 - Math.abs(normalizedDistance) * 200));
-                const h3 = item.querySelector('h3');
-                if (h3) {
-                    h3.style.setProperty('--fill-width', `${fillPercent}%`);
+    // Initialize Swiper
+    const swiper = new Swiper('.projectsSwiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        initialSlide: 0,
+        speed: 600,
+        coverflowEffect: {
+            rotate: 25,
+            stretch: 0,
+            depth: 250,
+            modifier: 1,
+            slideShadows: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: false,
+        },
+        keyboard: {
+            enabled: true,
+        },
+        mousewheel: {
+            forceToAxis: true,
+            sensitivity: 1,
+            releaseOnEdges: true,
+        },
+        breakpoints: {
+            320: {
+                coverflowEffect: {
+                    rotate: 20,
+                    depth: 200,
                 }
-            });
-            
-            // Update active dot (if exists)
-            const itemWidth = 450 + 80; // width + gap
-            const currentIndex = Math.round(scrollLeft / itemWidth);
-            if (dots && dots.length > 0) {
-                dots.forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
+            },
+            768: {
+                coverflowEffect: {
+                    rotate: 25,
+                    depth: 250,
+                }
+            },
+            1024: {
+                coverflowEffect: {
+                    rotate: 25,
+                    depth: 250,
+                }
             }
         }
-        
-        // Smooth scroll end handling for better snap
-        let scrollTimeout;
-        let isScrolling = false;
-        
-        // Combined scroll handler
-        projectsGrid.addEventListener('scroll', function() {
-            // Update carousel visuals immediately
-            updateCarousel();
-            
-            // Handle smooth snap after scroll ends
-            clearTimeout(scrollTimeout);
-            isScrolling = true;
-            
-            scrollTimeout = setTimeout(function() {
-                isScrolling = false;
-                // Gentle snap to nearest card when scroll stops
-                const containerWidth = projectsGrid.clientWidth;
-                const scrollLeft = projectsGrid.scrollLeft;
-                const containerCenter = scrollLeft + (containerWidth / 2);
-                
-                let closestItem = null;
-                let closestDistance = Infinity;
-                
-                projectItems.forEach((item) => {
-                    const itemLeft = item.offsetLeft;
-                    const itemWidth = item.offsetWidth;
-                    const itemCenter = itemLeft + (itemWidth / 2);
-                    const distance = Math.abs(itemCenter - containerCenter);
-                    
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestItem = item;
-                    }
-                });
-                
-                // Only snap if significantly off-center (threshold: 50px)
-                if (closestItem && closestDistance > 50) {
-                    const itemIndex = Array.from(projectItems).indexOf(closestItem);
-                    const itemWidth = 450 + 80;
-                    const targetScroll = (itemIndex * itemWidth) - (containerWidth / 2) + (450 / 2);
-                    projectsGrid.scrollTo({
-                        left: Math.max(0, targetScroll),
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
-        });
-        
-        // Initial update
-        updateCarousel();
-        
-        // Dot click navigation (if exists)
-        if (dots && dots.length > 0) {
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    const itemWidth = 450 + 80; // width + gap
-                    const containerWidth = projectsGrid.clientWidth;
-                    const targetScroll = (index * itemWidth) - (containerWidth / 2) + (450 / 2);
-                    projectsGrid.scrollTo({
-                        left: Math.max(0, targetScroll),
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        }
-        
-        // Click project card to center it
-        projectItems.forEach((item, index) => {
-            item.addEventListener('click', function(e) {
-                // Don't trigger if clicking a link
-                if (e.target.tagName === 'A' || e.target.closest('a')) return;
-                
-                const itemWidth = 450 + 80; // width + gap
-                const containerWidth = projectsGrid.clientWidth;
-                const targetScroll = (index * itemWidth) - (containerWidth / 2) + (450 / 2);
-                projectsGrid.scrollTo({
-                    left: Math.max(0, targetScroll),
-                    behavior: 'smooth'
-                });
-            });
-        });
-    }
+    });
 });
