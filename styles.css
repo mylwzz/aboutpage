@@ -518,6 +518,8 @@ h2 {
     margin: 40px 0;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .experience-item {
@@ -528,6 +530,8 @@ h2 {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .experience-item:hover {
@@ -584,6 +588,8 @@ h2 {
     margin: 40px 0;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .education-item {
@@ -622,6 +628,8 @@ h2 {
     margin: 40px 0;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .skills-grid {
@@ -845,6 +853,8 @@ h2 {
     margin: 40px 0;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .leadership-item {
@@ -896,6 +906,8 @@ h2 {
     margin: 40px 0;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .personal-info {
@@ -947,6 +959,8 @@ h2 {
 .leadership-item,
 .personal-info {
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Match hover pop to project/experience */
