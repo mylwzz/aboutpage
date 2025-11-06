@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
         slidesPerView: 'auto',
         initialSlide: 0,
         speed: 600,
+        loop: false,
+        loopAdditionalSlides: 0,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
         coverflowEffect: {
             rotate: 25,
             stretch: 0,
@@ -55,6 +59,19 @@ document.addEventListener("DOMContentLoaded", function () {
             forceToAxis: true,
             sensitivity: 1,
             releaseOnEdges: true,
+        },
+        on: {
+            click: function(swiper, event) {
+                // Find which slide was clicked
+                const clickedSlide = event.target.closest('.swiper-slide');
+                if (clickedSlide) {
+                    const clickedIndex = parseInt(clickedSlide.getAttribute('data-swiper-slide-index')) || 
+                                       Array.from(swiper.slides).indexOf(clickedSlide);
+                    if (clickedIndex !== swiper.activeIndex) {
+                        swiper.slideTo(clickedIndex);
+                    }
+                }
+            }
         },
         breakpoints: {
             320: {

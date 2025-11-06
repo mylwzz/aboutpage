@@ -679,6 +679,11 @@ h2 {
     justify-content: center;
     align-items: center;
     transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    cursor: pointer;
+}
+
+.swiper-slide-active {
+    cursor: default;
 }
 
 .project-item {
@@ -695,6 +700,7 @@ h2 {
     flex-direction: column;
     width: 100%;
     min-height: 750px;
+    pointer-events: auto;
 }
 
 .project-item:hover {
