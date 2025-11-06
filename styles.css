@@ -678,12 +678,6 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-.swiper-slide-active {
-    cursor: default;
 }
 
 .project-item {
@@ -699,19 +693,6 @@ h2 {
     flex-direction: column;
     width: 100%;
     min-height: 750px;
-    pointer-events: auto;
-    user-select: none;
-}
-
-/* Only allow hover effect on active slide */
-.swiper-slide-active .project-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Non-active slides: subtle hint they're clickable */
-.swiper-slide:not(.swiper-slide-active):hover .project-item {
-    opacity: 0.9;
 }
 
 .dark-mode .project-item {

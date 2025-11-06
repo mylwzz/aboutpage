@@ -31,16 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize Swiper
     const swiper = new Swiper('.projectsSwiper', {
         effect: 'coverflow',
-        grabCursor: true,
         centeredSlides: true,
         slidesPerView: 'auto',
         initialSlide: 0,
-        speed: 500,
+        speed: 400,
         slideToClickedSlide: true,
-        preventClicks: false,
-        preventClicksPropagation: false,
-        touchRatio: 1,
-        threshold: 5,
+        touchRatio: 1.5,
+        resistanceRatio: 0.85,
+        longSwipesRatio: 0.3,
         coverflowEffect: {
             rotate: 25,
             stretch: 0,
@@ -51,14 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
-            dynamicBullets: false,
         },
         keyboard: {
             enabled: true,
         },
         mousewheel: {
             forceToAxis: true,
-            sensitivity: 1,
+            sensitivity: 0.5,
             releaseOnEdges: true,
         },
         breakpoints: {
@@ -84,21 +81,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
-    });
-
-    // Custom click handler for better control
-    const slides = document.querySelectorAll('.swiper-slide');
-    slides.forEach((slide, index) => {
-        slide.addEventListener('click', function(e) {
-            // Don't interfere if clicking a link
-            if (e.target.tagName === 'A' || e.target.closest('a')) {
-                return;
-            }
-            
-            // Only slide to if not already active
-            if (!slide.classList.contains('swiper-slide-active')) {
-                swiper.slideTo(index);
-            }
-        });
     });
 });
