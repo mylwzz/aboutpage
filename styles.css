@@ -678,8 +678,8 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
     cursor: pointer;
+    user-select: none;
 }
 
 .swiper-slide-active {
@@ -692,7 +692,6 @@ h2 {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
@@ -701,11 +700,18 @@ h2 {
     width: 100%;
     min-height: 750px;
     pointer-events: auto;
+    user-select: none;
 }
 
-.project-item:hover {
+/* Only allow hover effect on active slide */
+.swiper-slide-active .project-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Non-active slides: subtle hint they're clickable */
+.swiper-slide:not(.swiper-slide-active):hover .project-item {
+    opacity: 0.9;
 }
 
 .dark-mode .project-item {

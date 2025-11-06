@@ -35,11 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
         centeredSlides: true,
         slidesPerView: 'auto',
         initialSlide: 0,
-        speed: 600,
-        loop: false,
-        loopAdditionalSlides: 0,
-        watchSlidesProgress: true,
+        speed: 500,
         slideToClickedSlide: true,
+        preventClicks: false,
+        preventClicksPropagation: false,
+        touchRatio: 1,
+        threshold: 5,
         coverflowEffect: {
             rotate: 25,
             stretch: 0,
@@ -60,38 +61,44 @@ document.addEventListener("DOMContentLoaded", function () {
             sensitivity: 1,
             releaseOnEdges: true,
         },
-        on: {
-            click: function(swiper, event) {
-                // Find which slide was clicked
-                const clickedSlide = event.target.closest('.swiper-slide');
-                if (clickedSlide) {
-                    const clickedIndex = parseInt(clickedSlide.getAttribute('data-swiper-slide-index')) || 
-                                       Array.from(swiper.slides).indexOf(clickedSlide);
-                    if (clickedIndex !== swiper.activeIndex) {
-                        swiper.slideTo(clickedIndex);
-                    }
-                }
-            }
-        },
         breakpoints: {
             320: {
+                slidesPerView: 1.2,
                 coverflowEffect: {
                     rotate: 20,
                     depth: 200,
                 }
             },
             768: {
+                slidesPerView: 'auto',
                 coverflowEffect: {
                     rotate: 25,
                     depth: 250,
                 }
             },
             1024: {
+                slidesPerView: 'auto',
                 coverflowEffect: {
                     rotate: 25,
                     depth: 250,
                 }
             }
         }
+    });
+
+    // Custom click handler for better control
+    const slides = document.querySelectorAll('.swiper-slide');
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', function(e) {
+            // Don't interfere if clicking a link
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
+            
+            // Only slide to if not already active
+            if (!slide.classList.contains('swiper-slide-active')) {
+                swiper.slideTo(index);
+            }
+        });
     });
 });
